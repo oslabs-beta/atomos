@@ -1,0 +1,20 @@
+{
+  "name": "atomos",
+  "version": "1.0.0",
+  "description": "State management visualization tool for React/Recoil",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oslabs-beta/atomos.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oslabs-beta/atomos/issues"
+  },
+  "homepage": "https://github.com/oslabs-beta/atomos#readme"
+}
