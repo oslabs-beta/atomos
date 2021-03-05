@@ -1,0 +1,6 @@
+# Dependency Directories
+node_modules
+# DS Store
+.DS_Store
+# Bundle
+src/extension/build/bundles
