@@ -16,8 +16,11 @@ const initialElements = [
 ];
 export default () => {
   /****** CONSOLE LOGS RUN IN DEVTOOLS CONSOLE ******/
+  // console.log('App.jsx is loaded');
   // create backend file to manifest.json to access react devtool
-  // console.log('react dev tools -- App.jsx', window.__REACT_DEVTOOLS_GLOBAL_HOOK__);
+  // console.log('App.jsx window', window);
+  // const dev = window.__REACT_DEVTOOLS_GLOBAL_HOOK__;
+  // console.log('react dev tools -- App.jsx', dev);
 
   // console.log('chrome tabs -- App.jsx', chrome.tabs);
   // console.log('chrome -- App.jsx', chrome);

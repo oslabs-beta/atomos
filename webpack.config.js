@@ -6,6 +6,7 @@ const config = {
     app: './src/app/index.jsx',
     background: './src/extension/background.js',
     content: './src/extension/content.js',
+    backend: './src/backend/reactFileParser.js',
   },
   output: {
     path: path.resolve(__dirname, 'src/extension/build/bundles'),
