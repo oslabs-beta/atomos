@@ -16,7 +16,9 @@
       "matches": ["<all_urls>"]
     }
   ],
+  "web_accessible_resources": ["bundles/backend.bundle.js"],
   "permissions": [
-    "activeTab"
+    "activeTab",
+    "<all_urls>"
   ]
 }
