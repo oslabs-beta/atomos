@@ -6,6 +6,7 @@ import ReactFlow, {
   MiniMap,
   Controls,
   Background,
+  Handle,
 } from 'react-flow-renderer';
 
 import initialElements from './initial-elements';
@@ -17,12 +18,11 @@ const onLoad = (reactFlowInstance) => {
 
 const ComponentTree = () => {
   const [elements, setElements] = useState(initialElements);
-  const onElementsRemove = (elementsToRemove) =>
-    setElements((els) => removeElements(elementsToRemove, els));
+  const onElementsRemove = (elementsToRemove) => setElements((els) => removeElements(elementsToRemove, els));
   const onConnect = (params) => setElements((els) => addEdge(params, els));
 
   return (
-    <div style={{ height: '100vh'}}>
+    <div style={{ height: '92.5vh' }}>
       <ReactFlow
         elements={elements}
         onElementsRemove={onElementsRemove}
@@ -31,6 +31,7 @@ const ComponentTree = () => {
         snapToGrid
         snapGrid={[15, 15]}
       >
+        <Handle style={{ color: '#1a192b' }} />
         <MiniMap
           nodeStrokeColor={(n) => {
             if (n.style?.background) return n.style.background;
