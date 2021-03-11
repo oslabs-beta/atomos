@@ -18,5 +18,3 @@ chrome.tabs.query({ currentWindow: true, active: true }, (tabs) => {
 // console.log('react dev tools -- index.js', dev);
 
 ReactDOM.render(<App />, document.getElementById('root'));
-
-      
