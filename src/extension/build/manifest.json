@@ -17,8 +17,5 @@
     }
   ],
   "web_accessible_resources": ["bundles/backend.bundle.js"],
-  "permissions": [
-    "activeTab",
-    "<all_urls>"
-  ]
+  "permissions": ["activeTab", "<all_urls>"]
 }
