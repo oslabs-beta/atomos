@@ -1,29 +1,29 @@
 // Full access to extensions APIs
-// communicates with content scripts and reactFileParser
+// communicates with content scripts and App.jsx
 
 console.log('background.js is loaded');
 const connections = {};
 // content script is injected here when dev tools are opened
 chrome.runtime.onConnect.addListener((port) => {
   // create a new variable for a listener function
-  console.log('I am hitting line 8 in background.js');
+  // console.log('I am hitting line 8 in background.js');
 
   const listenerForDevtool = (msg, sender, sendResponse) => {
     // creates a new key/value pair of current window & devtools tab
     if (msg.name === 'connect' && msg.tabId) {
-      console.log('I am also hitting here too!');
+      // console.log('I am also hitting here too!');
       connections[msg.tabId] = port;
     }
   };
   // Listen from dev tools
   // consistently listening on open port
   port.onMessage.addListener(listenerForDevtool);
-  console.log('Listing from devtool successfully made');
+  // console.log('Listing from devtool successfully made');
 
   // if the port is disconnected, handle it here
   port.onDisconnect.addListener((port) => {
     port.onMessage.removeListener(listenerForDevtool);
-    console.log('successfully removeListener');
+    // console.log('successfully removeListener');
     const tabs = Object.keys(connections);
     for (let i = 0; i < tabs.length; i++) {
       if (connections[tabs[i]] === port) {
@@ -37,7 +37,7 @@ chrome.runtime.onConnect.addListener((port) => {
 // Receives message from content.js and checks for valid connections before posting to devtools
 chrome.runtime.onMessage.addListener((request, sender) => {
   if (sender.tab) {
-    console.log('I am receiving msg from content.js');
+    // console.log('I am receiving msg from content.js');
     const tabId = sender.tab.id;
     if (tabId in connections) {
       connections[tabId].postMessage(request);

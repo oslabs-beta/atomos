@@ -16,7 +16,8 @@ const App = () => {
       name: 'connect',
       tabId: chrome.devtools.inspectedWindow.tabId,
     });
-    console.log('hitting line 20 in app.jsx for port');
+    // console.log('hitting line 20 in app.jsx for port');
+    //saving data to ReactfileParser 
     port.onMessage.addListener((message) => setTree(message));
   }, []);
   return (
