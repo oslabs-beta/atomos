@@ -1,18 +1,20 @@
+import { getComponentNames } from "./getComponentNames";
+
 // backend folder is referenced in manifest as a web accessible resource
 // script is injected into content.js so it can be ran there
 
+<<<<<<< HEAD
 // console.log("hello from backend folder");
 // console.log("devtool backend", window.__REACT_DEVTOOLS_GLOBAL_HOOK__);
 
+=======
+>>>>>>> 9918bfef38b3d8ad69c061e92abc541f17fe4688
 const dev = window.__REACT_DEVTOOLS_GLOBAL_HOOK__;
-const fiber = dev.getFiberRoots(1);
-
-// console.log('',dev.onCommitFiberRoot);
 
 // patching / rewriting the onCommitFiberRoot functionality
 dev.onCommitFiberRoot = (function (original) {
-  console.log("OGGGGGGGG", original);
   return function (...args) {
+<<<<<<< HEAD
     // console.log("reactFileParser.js line 24 ARGS:", args);
     const fiberNode = args[1].current.child;
     console.log("fiberNode", fiberNode);
@@ -23,9 +25,17 @@ dev.onCommitFiberRoot = (function (original) {
     let reactFlowNodes = renderComponentTree(parsedData);
     // console.log("renderComponentTree:", renderComponentTree(whatever));
     // console.log('REACT FLOW NODES AAAAAA:', idk);
+=======
+    // grab root node of currently rendered fiber tree
+    const fiberNode = args[1].current.child;
+    // create component tree obj with atom/selector relationships
+    const GCN = getComponentNames(fiberNode);
+    console.log(GCN);
+>>>>>>> 9918bfef38b3d8ad69c061e92abc541f17fe4688
   };
 }(dev.onCommitFiberRoot));
 
+<<<<<<< HEAD
 console.log("after change", dev.onCommitFiberRoot);
 
 // function that creates an object for each node
@@ -114,3 +124,6 @@ module.exports = { reactFlowNodes };
 
 // console.log('REACT FLOW NODES:', reactFlowNodes);
 // reactFlowNodes();
+=======
+// Creates and returns obj containing component info from rendered DOM
+>>>>>>> 9918bfef38b3d8ad69c061e92abc541f17fe4688
