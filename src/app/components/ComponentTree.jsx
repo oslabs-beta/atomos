@@ -9,8 +9,8 @@ import ReactFlow, {
   Handle,
 } from 'react-flow-renderer';
 
-let reactFlowNodes = require('../../backend/reactFileParser');
-console.log("THIS IS REACTFLOWNODES IN COMPONENT TREE:", reactFlowNodes);
+// TO DO: change importtstatement to ree Data
+import initialElements from './initial-elements';
 
 const onLoad = (reactFlowInstance) => {
   console.log('flow loaded:', reactFlowInstance);
@@ -18,7 +18,7 @@ const onLoad = (reactFlowInstance) => {
 };
 
 const ComponentTree = () => {
-  const [elements, setElements] = useState(reactFlowNodes);
+  const [elements, setElements] = useState(initialElements);
   const onElementsRemove = (elementsToRemove) => setElements((els) => removeElements(elementsToRemove, els));
   const onConnect = (params) => setElements((els) => addEdge(params, els));
 

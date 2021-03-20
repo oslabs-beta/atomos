@@ -9,14 +9,15 @@ const port = chrome.runtime.connect({ name: 'Atomos' });
 
 const App = () => {
   const [tree, setTree] = useState();
-  // Received fiber node state changes from reactFileParser
+  // Rece ived fiber node state changes from reactFileParser
   useEffect(() => {
     // establish a connection between devtools and background page
     port.postMessage({
       name: 'connect',
       tabId: chrome.devtools.inspectedWindow.tabId,
     });
-    // console.log('hitting line 20 in app.jsx for port');
+    // console.log('tab ID from App.jsx', chrome.devtools.inspectedWindow.tabId);
+    console.log('hitting line 20 in app.jsx for port');
     //saving data to ReactfileParser 
     port.onMessage.addListener((message) => setTree(message));
   }, []);
