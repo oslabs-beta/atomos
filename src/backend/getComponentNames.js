@@ -1,5 +1,6 @@
 import { getAtomSelector } from "./getAtomSelector";
 
+// Creates and returns obj containing component info from rendered DOM
 export function getComponentNames(fiberNode) {
   //couter will be used to ID each node
   let counter = 0;
@@ -13,6 +14,7 @@ export function getComponentNames(fiberNode) {
 
     // conditional to check if node is a NAMED component
     if (node.type && node.type.name) {
+      components.id = ++counter;
       components.name = node.type.name;
 
       // if node has memoized state enter block to search for atom/selector values
@@ -60,7 +62,6 @@ export function getComponentNames(fiberNode) {
     } else components.name = null;
 
     // set component obj values
-    components.id = ++counter;
     components.siblings;
     components.children;
     // check if node has sibling or child and recurse on sibling and child

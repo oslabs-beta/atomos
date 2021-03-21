@@ -1,5 +1,8 @@
 {
   "name": "atomos",
+  "jest": {
+    "verbose": true
+  },
   "version": "1.0.0",
   "description": "State management visualization tool for React/Recoil",
   "main": "index.js",
@@ -20,7 +23,7 @@
   },
   "homepage": "https://github.com/oslabs-beta/atomos#readme",
   "devDependencies": {
-    "@babel/core": "^7.10.3",
+    "@babel/core": "^7.13.10",
     "@babel/polyfill": "^7.10.4",
     "@babel/preset-env": "^7.10.3",
     "@babel/preset-react": "^7.10.1",
@@ -41,7 +44,12 @@
     "webpack-cli": "^4.5.0"
   },
   "dependencies": {
+    "@babel/node": "^7.13.10",
+    "@babel/plugin-transform-async-to-generator": "^7.13.0",
+    "@babel/plugin-transform-runtime": "^7.13.10",
+    "babel-jest": "^26.6.3",
     "bootstrap": "^4.6.0",
+    "lodash.throttle": "^4.1.1",
     "react": "^17.0.1",
     "react-bootstrap": "^1.5.1",
     "react-dom": "^17.0.1",
