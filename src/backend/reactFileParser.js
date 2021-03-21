@@ -15,5 +15,3 @@ dev.onCommitFiberRoot = (function (original) {
     console.log(GCN);
   };
 })(dev.onCommitFiberRoot);
-
-// Creates and returns obj containing component info from rendered DOM

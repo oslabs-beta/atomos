@@ -1,3 +1,9 @@
+/*  
+  Every Recoil app will contain a SET of knownAtoms and knownSeletors properties in the 
+  memoizedState linked list values. If there are no atoms or selectors used in app
+  knownAtoms and knownSelectors value will be null. 
+*/
+
 // Creates Object to find atom/selectors on rendered DOM
 export function getAtomSelector(fiberNode) {
   // object will store our known atoms and selctors when found in memoizedState
@@ -16,7 +22,6 @@ export function getAtomSelector(fiberNode) {
       // assign values in atomSelector obj when atoms and selectors are found
       atomSelectors.atoms = node.memoizedState.current.knownAtoms;
       atomSelectors.selectors = node.memoizedState.current.knownSelectors;
-      console.log("FOUND ATOMS!!!", atomSelectors);
     } else {
       // recursively call traverse with memoized.next obj
       traverse(node.next);
