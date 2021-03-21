@@ -5,7 +5,7 @@ import NavBar from "./components/NavBar.jsx";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Atoms from "./components/Atoms.jsx";
 import Selectors from "./components/Selectors.jsx";
-const port = chrome.runtime.connect({ name: "Atomos" });
+// const port = chrome.runtime.connect({ name: "Atomos" });
 
 const App = () => {
   // const [tree, setTree] = useState();
