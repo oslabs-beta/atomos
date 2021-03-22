@@ -1,5 +1,6 @@
 import { getAtomSelector } from "./getAtomSelector";
 
+// Creates and returns obj containing component info from rendered DOM
 export function getComponentNames(fiberNode) {
   //couter will be used to ID each node
   let counter = 0;
