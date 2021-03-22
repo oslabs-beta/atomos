@@ -1,22 +1,44 @@
 // background scripts like fetch requests and server stuff go here
 
-/** ****** CONSOLE LOGS SHOW UP IN BACKGROUND CONSOLE ****** */
-// DOM MANIPULATION DOES NOT WORK HERE
-// const pls = document.getElementById('Landing');
-// console.log('background dom manipulation', pls);
-
-/** ****** REACT DEVTOOLS CANNOT BE ACCESSED HERE ****** */
-// console.log('background.js window', window);
-// const dev = window.__REACT_DEVTOOLS_GLOBAL_HOOK__;
-// console.log('react dev tools -- background.js', dev);
-
 console.log('background.js is loaded');
+const connections = {};
+// content script is injected here when dev tools are opened
+chrome.runtime.onConnect.addListener((port) => {
+  // create a new variable for a listener function
+  console.log('I am hitting line 8 in background.js');
+  const listenerForDevtool = (msg, sender, sendResponse) => {
+    if (msg.name === 'connect' && msg.tabId) {
+      console.log('I am also hitting here too!');
+      connections[msg.tabId] = port;
+      return;
+    }
+    return true;
+  };
 
-// chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
-//   console.log('background event listener');
-// });
+  // Listen from devtools
+  port.onMessage.addListener(listenerForDevtool);
+  console.log('Listing from devtool successfully made');
+  port.onDisconnect.addListener(function(port){
+    port.onMessage.removeListener(listenerForDevtool);
+    console.log('successfully removeListener');
+    const tabs = Object.keys(connections);
+    for (let i = 0; i < tabs.length; i++) {
+      if (connections[tabs[i]] === port) {
+        delete connections[tabs[i]];
+        break;
+      }
+    }
+  });
+});
 
-/** ****** TO DO: ******* */
-// create event listener
-// receive message from content.js
-// send another message back to content.js
+// Receives message from content.js and checks for valid connections before posting to devtools
+chrome.runtime.onMessage.addListener((request, sender) => {
+  if (sender.tab) {
+    console.log('I am receiving msg from content.js');
+    const tabId = sender.tab.id;
+    if (tabId in connections) {
+      connections[tabId].postMessage(request);
+    } else console.log('Tab not found');
+  } else console.log('sender.tab is not defined');
+  return Promise.resolve('dummy response to keep the console quiet');
+});
