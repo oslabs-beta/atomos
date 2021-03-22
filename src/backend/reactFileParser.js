@@ -1,15 +1,6 @@
 import getComponentNames from './getComponentNames';
 import renderComponentTree from './renderComponentTree';
 
-
-
-/** ******** !!NEW CODE!! ******** * */
-import renderPositions from './renderPositions';
-/** ******** !!NEW CODE!! ******** * */
-
-
-
-
 // backend folder is referenced in manifest as a web accessible resource
 // script is injected into content.js so it can be ran there
 
@@ -25,20 +16,6 @@ dev.onCommitFiberRoot = (function (original) {
     const GCN = getComponentNames(fiberNode);
     // convert getComponentNames data into array of objects that ReactFlow can read
     const treeNodes = renderComponentTree(GCN);
-
-
-
-
-    /** ******** !!NEW CODE!! ******** * */
-    // testing the render positions function
-    console.log(treeNodes);
-    const positions = renderPositions(treeNodes);
-    console.log('render positions', positions);
-    /** ******** !!NEW CODE!! ******** * */
-
-
-
-
     // invoke sendToContentScript to send treeNode data to the front end
     sendToContentScript(treeNodes);
   };
