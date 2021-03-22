@@ -24,7 +24,7 @@ const ComponentTree = () => {
     setElements((els) => removeElements(elementsToRemove, els));
   const onConnect = (params) => setElements((els) => addEdge(params, els));
 
-  // Rece ived fiber node state changes from reactFileParser
+  // Received fiber node state changes from reactFileParser
   useEffect(() => {
     // establish a connection between devtools and background page
     port.postMessage({
