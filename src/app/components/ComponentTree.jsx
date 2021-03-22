@@ -10,8 +10,6 @@ import ReactFlow, {
   Handle,
 } from "react-flow-renderer";
 
-// TO DO: change importtstatement to ree Data
-import initialElements from "./initial-elements";
 
 const onLoad = (reactFlowInstance) => {
   console.log("flow loaded:", reactFlowInstance);
@@ -19,24 +17,23 @@ const onLoad = (reactFlowInstance) => {
 };
 
 const ComponentTree = () => {
-  const [elements, setElements] = useState(initialElements);
+  const [elements, setElements] = useState([]);
   const onElementsRemove = (elementsToRemove) =>
     setElements((els) => removeElements(elementsToRemove, els));
   const onConnect = (params) => setElements((els) => addEdge(params, els));
 
-  // Rece ived fiber node state changes from reactFileParser
+  // Received fiber node state changes from reactFileParser
   useEffect(() => {
     // establish a connection between devtools and background page
     port.postMessage({
       name: "connect",
       tabId: chrome.devtools.inspectedWindow.tabId,
-    });
-    // console.log('tab ID from App.jsx', chrome.devtools.inspectedWindow.tabId);
-    console.log("hitting line 35 in comptree.jsx for port");
+    })
     //saving data to ReactfileParser
     port.onMessage.addListener((message) => {
       console.log("setting tree");
       console.log("Message tree in COMPTREE.jsx line 39:", message);
+      //using React Hook, push message to elements 
       setElements(message);
     });
   }, []);
