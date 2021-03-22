@@ -95,6 +95,7 @@ A list of commonly used resources that I find helpful are listed in the acknowle
 
 * [Recoil](https://recoiljs.org/)
 * [React](https://reactjs.org/)
+* [React Fiber](https://github.com/acdlite/react-fiber-architecture)
 * [React Flow](https://recoiljs.org/)
 * [React Router](https://reactrouter.com/)
 * [React Bootstrap](https://react-bootstrap.github.io/)
@@ -166,7 +167,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 Cole Redfearn - [@GitHub](https://github.com/coleredfearn/) - [@LinkedIn](https://www.linkedin.com/in/coleredfearn/)
 
-Jonathan Mendoza - [@GitHub](https://twitter.com/your_username) - [@LinkedIn](https://twitter.com/your_username)
+Jonathan Mendoza - [@GitHub](https://github.com/mendxza) - [@LinkedIn](https://twitter.com/your_username)
 
 Sumin Kim - [@GitHub](https://github.com/ppsm920/) - [@LinkedIn](https://www.linkedin.com/in/ppsm920/)
 
