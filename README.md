@@ -28,13 +28,13 @@
 <br />
 <p align="center">
   <a href="https://github.com/oslabs-beta/atomos">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="assets/atomos-banner.png" alt="Logo" height="200">
   </a>
 
   <h3 align="center">Atomos</h3>
 
   <p align="center">
-    Atomos is an open source Chrome developer tool for Recoil that provides real-time visualization of the component tree and atom-selector relationships to facilitate the debugging of a React application. Atomos was developed under tech accelerator OSLabs.
+    Atomos is an open source Chrome developer tool for Recoil that provides real-time visualization of the component tree and atom-selector relationships to facilitate the debugging of a React application. <br /> Atomos was developed under tech accelerator OSLabs.
     <br />
     <a href="https://www.getatomos.io"><strong>getatomos.io</strong></a>
     <br />
@@ -80,16 +80,15 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-There are many great README templates available on GitHub, however, I didn't find one that really suit my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
+Atomos is an open source Chrome developer tool for Recoil that provides real-time visualization of the component tree and atom-selector relationships to facilitate the debugging of a React application. Atomos was developed under tech accelerator OSLabs.
 
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should element DRY principles to the rest of your life :smile:
+Why we built this project:
+* Feature 1
+* Feature 2
+* Feature :smile:
 
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have have contributed to expanding this template!
+Atomos is an open source Chrome developer tool for Recoil that provides real-time visualization of the component tree and atom-selector relationships to facilitate the debugging of a React application. Atomos was developed under tech accelerator OSLabs.
 
-A list of commonly used resources that I find helpful are listed in the acknowledgements.
 
 ### Built With
 
@@ -108,28 +107,31 @@ A list of commonly used resources that I find helpful are listed in the acknowle
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+To get a local copy up and running, follow these simple steps.
 
 ### Prerequisites
 
-Download the <a href="https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en">React Developer Tools</a> Chrome extension.
+The React Developer Tools Chrome <a href="https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en">extension</a> is required for Atomos to run.
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+To get started, download the Atomos [extension](https://example.com) from the Chrome Web Store.
+
+Alternatively, you can manually install Atomos in [Developer mode](https://developer.chrome.com/docs/extensions/mv3/faq/#faq-dev-01).
+
+1. Clone the repo
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   git clone https://github.com/oslabs-beta/atomos.git
    ```
-3. Install NPM packages
+2. Install NPM packages
    ```sh
    npm install
    ```
-4. Enter your API in `config.js`
-   ```JS
-   const API_KEY = 'ENTER YOUR API';
+3. Create a build directory
+   ```sh
+   npm run build
    ```
+4. Load the unpacked extension from `src/extension/build` to Chrome
 
 
 
