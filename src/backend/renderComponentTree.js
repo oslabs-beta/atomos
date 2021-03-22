@@ -1,6 +1,5 @@
-
-// creating a function to accept the deeply nexted object 
-// created by getComponentNames() and convert it into an array of 
+// creating a function to accept the deeply nexted object
+// created by getComponentNames() and convert it into an array of
 // objects that can be used by React Flow in ComponentTree.jsx
 export function renderComponentTree(node) {
   // instiantating our result array, which will hold all named component tree nodes
@@ -16,7 +15,7 @@ export function renderComponentTree(node) {
     // if the current node has a name property other than null, we will create a new element in result (in the form of an object)
     if (node.name !== null) {
       yaxis = depth * 100;
-      xaxis = siblingCount * 300 / depth;
+      xaxis = siblingCount * 250; // 300 / depth;
       // instantiating a new node object for each component and setting its properties according to ReactFlow style
       const obj = {};
       obj.id = node.id.toString();
@@ -44,7 +43,7 @@ export function renderComponentTree(node) {
     // if node has an unnamed child, recurse into that child without incrementing depth.
     // unnamed children are HTML elements that hold components within them, but are not components themselves
     if (node.children) {
-      console.log('where node.children is');
+      console.log("where node.children is");
       return makeNodes(node.children);
     }
     return result;

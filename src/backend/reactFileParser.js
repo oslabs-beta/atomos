@@ -18,7 +18,6 @@ dev.onCommitFiberRoot = (function (original) {
     const treeNodes = renderComponentTree(GCN);
     // invoke sendToContentScript to send treeNode data to the front end
     sendToContentScript(treeNodes);
-    console.log("THE NODES FROM REACT FILE PARSER:", treeNodes);
   };
 })(dev.onCommitFiberRoot);
 
