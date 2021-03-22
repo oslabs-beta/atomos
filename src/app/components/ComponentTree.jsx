@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
+const port = chrome.runtime.connect({ name: "Atomos" });
 
 import ReactFlow, {
   removeElements,
@@ -7,23 +8,38 @@ import ReactFlow, {
   Controls,
   Background,
   Handle,
-} from 'react-flow-renderer';
+} from "react-flow-renderer";
 
-let reactFlowNodes = require('../../backend/reactFileParser');
-console.log("THIS IS REACTFLOWNODES IN COMPONENT TREE:", reactFlowNodes);
 
 const onLoad = (reactFlowInstance) => {
-  console.log('flow loaded:', reactFlowInstance);
+  console.log("flow loaded:", reactFlowInstance);
   reactFlowInstance.fitView();
 };
 
 const ComponentTree = () => {
-  const [elements, setElements] = useState(reactFlowNodes);
-  const onElementsRemove = (elementsToRemove) => setElements((els) => removeElements(elementsToRemove, els));
+  const [elements, setElements] = useState([]);
+  const onElementsRemove = (elementsToRemove) =>
+    setElements((els) => removeElements(elementsToRemove, els));
   const onConnect = (params) => setElements((els) => addEdge(params, els));
 
+  // Received fiber node state changes from reactFileParser
+  useEffect(() => {
+    // establish a connection between devtools and background page
+    port.postMessage({
+      name: "connect",
+      tabId: chrome.devtools.inspectedWindow.tabId,
+    })
+    //saving data to ReactfileParser
+    port.onMessage.addListener((message) => {
+      console.log("setting tree");
+      console.log("Message tree in COMPTREE.jsx line 39:", message);
+      //using React Hook, push message to elements 
+      setElements(message);
+    });
+  }, []);
+
   return (
-    <div style={{ height: '92.5vh' }}>
+    <div style={{ height: "92.5vh" }}>
       <ReactFlow
         elements={elements}
         onElementsRemove={onElementsRemove}
@@ -32,18 +48,18 @@ const ComponentTree = () => {
         snapToGrid
         snapGrid={[15, 15]}
       >
-        <Handle style={{ color: '#1a192b' }} />
+        <Handle style={{ color: "#1a192b" }} />
         <MiniMap
           nodeStrokeColor={(n) => {
             if (n.style?.background) return n.style.background;
-            if (n.type === 'input') return '#0041d0';
-            if (n.type === 'output') return '#1a192b';
-            if (n.type === 'default') return '#1a192b';
-            return '#eee';
+            if (n.type === "input") return "#0041d0";
+            if (n.type === "output") return "#1a192b";
+            if (n.type === "default") return "#1a192b";
+            return "#eee";
           }}
           nodeColor={(n) => {
             if (n.style?.background) return n.style.background;
-            return '#fff';
+            return "#fff";
           }}
           nodeBorderRadius={1}
         />
