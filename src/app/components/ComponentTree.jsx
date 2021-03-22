@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import ReactFlow, {
   removeElements,
   addEdge,
@@ -6,11 +6,12 @@ import ReactFlow, {
   Controls,
   Background,
   Handle,
-} from "react-flow-renderer";
-const port = chrome.runtime.connect({ name: "Atomos" });
+} from 'react-flow-renderer';
+
+const port = chrome.runtime.connect({ name: 'Atomos' });
 
 const onLoad = (reactFlowInstance) => {
-  console.log("flow loaded:", reactFlowInstance);
+  console.log('flow loaded:', reactFlowInstance);
   reactFlowInstance.fitView();
 };
 
@@ -24,14 +25,14 @@ const ComponentTree = () => {
     setElements((els) => removeElements(elementsToRemove, els));
   const onConnect = (params) => setElements((els) => addEdge(params, els));
 
-  // Rece ived fiber node state changes from reactFileParser
+  // Received fiber node state changes from reactFileParser
   useEffect(() => {
     // establish a connection between devtools and background page
     port.postMessage({
-      name: "connect",
+      name: 'connect',
       tabId: chrome.devtools.inspectedWindow.tabId,
     });
-    //saving data to ReactfileParser
+    // saving data to ReactfileParser
     port.onMessage.addListener((message) => {
       setLoading(false);
       setElements(message);
@@ -46,38 +47,37 @@ const ComponentTree = () => {
       </div>
     );
     // render component tree after state was changed
-  } else {
-    return (
-      <div style={{ height: "92.5vh" }}>
-        <ReactFlow
-          elements={elements}
-          onElementsRemove={onElementsRemove}
-          onConnect={onConnect}
-          onLoad={onLoad}
-          snapToGrid
-          snapGrid={[15, 15]}
-        >
-          <Handle style={{ color: "#1a192b" }} />
-          <MiniMap
-            nodeStrokeColor={(n) => {
-              if (n.style?.background) return n.style.background;
-              if (n.type === "input") return "#0041d0";
-              if (n.type === "output") return "#1a192b";
-              if (n.type === "default") return "#1a192b";
-              return "#eee";
-            }}
-            nodeColor={(n) => {
-              if (n.style?.background) return n.style.background;
-              return "#fff";
-            }}
-            nodeBorderRadius={1}
-          />
-          <Controls />
-          <Background color="#aaa" gap={16} />
-        </ReactFlow>
-      </div>
-    );
   }
+  return (
+    <div style={{ height: '92.5vh' }}>
+      <ReactFlow
+        elements={elements}
+        onElementsRemove={onElementsRemove}
+        onConnect={onConnect}
+        onLoad={onLoad}
+        snapToGrid
+        snapGrid={[15, 15]}
+      >
+        <Handle style={{ color: '#1a192b' }} />
+        <MiniMap
+          nodeStrokeColor={(n) => {
+            if (n.style?.background) return n.style.background;
+            if (n.type === 'input') return '#0041d0';
+            if (n.type === 'output') return '#1a192b';
+            if (n.type === 'default') return '#1a192b';
+            return '#eee';
+          }}
+          nodeColor={(n) => {
+            if (n.style?.background) return n.style.background;
+            return '#fff';
+          }}
+          nodeBorderRadius={1}
+        />
+        <Controls />
+        <Background color="#aaa" gap={16} />
+      </ReactFlow>
+    </div>
+  );
 };
 
 export default ComponentTree;
