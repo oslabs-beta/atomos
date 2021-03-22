@@ -13,12 +13,10 @@ function sendMessage(tree) {
   chrome.runtime.sendMessage(tree);
 }
 // this is listening for the message from reactFileParser
-window.addEventListener("message", handleMessage);
+window.addEventListener('message', handleMessage);
 
 // make sure reactFileParser is appended when the DOM is loaded
-// inject reactFileParser in the application after 5000ms
-setTimeout(() => {
-  const script = document.createElement("script");
-  script.src = chrome.extension.getURL("bundles/backend.bundle.js");
-  document.head.appendChild(script);
-}, 5000);
+// inject reactFileParser in the application
+const script = document.createElement('script');
+script.src = chrome.extension.getURL('bundles/backend.bundle.js');
+document.head.appendChild(script);

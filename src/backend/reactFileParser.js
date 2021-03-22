@@ -1,8 +1,8 @@
-import { getComponentNames } from "./getComponentNames";
-import { renderComponentTree } from "./renderComponentTree";
+import getComponentNames from './getComponentNames';
+import renderComponentTree from './renderComponentTree';
 
 // backend folder is referenced in manifest as a web accessible resource
-// script isl injected into content.js so it can be ran there
+// script is injected into content.js so it can be ran there
 
 // retrieving React app data from the window via React Devtools
 const dev = window.__REACT_DEVTOOLS_GLOBAL_HOOK__;
@@ -19,10 +19,10 @@ dev.onCommitFiberRoot = (function (original) {
     // invoke sendToContentScript to send treeNode data to the front end
     sendToContentScript(treeNodes);
   };
-})(dev.onCommitFiberRoot);
+}(dev.onCommitFiberRoot));
 
 // sends the array with tree data to content.js
 function sendToContentScript(fiberTree) {
   const tree = JSON.parse(JSON.stringify(fiberTree));
-  window.postMessage({ tree }, "*");
+  window.postMessage({ tree }, '*');
 }
