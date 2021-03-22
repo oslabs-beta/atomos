@@ -1,13 +1,9 @@
 // Full access to extensions APIs
 // communicates with content scripts and App.jsx
-
-console.log('background.js is loaded');
 const connections = {};
-
 // content script is injected here when dev tools are opened
 chrome.runtime.onConnect.addListener((port) => {
   // create a new variable for a listener function
-
   const listenerForDevtool = (msg, sender, sendResponse) => {
     // creates a new key/value pair of current window & devtools tab
     if (msg.name === 'connect' && msg.tabId) {
@@ -17,8 +13,7 @@ chrome.runtime.onConnect.addListener((port) => {
   // Listen from App.jsx
   // consistently listening on open port
   port.onMessage.addListener(listenerForDevtool);
-  console.log('Listing from devtool successfully made');
-
+  // console.log("Listing from devtool successfully made");
   // if the port is disconnected, handle it here
   port.onDisconnect.addListener((port) => {
     port.onMessage.removeListener(listenerForDevtool);
