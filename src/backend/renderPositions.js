@@ -6,8 +6,6 @@
 
 
 export default function renderPositions(array) {
-  const output = [];
-
   // instantiate object to store nodes that are on the same y-axis together
   // object key will be a y-coordinate
   // object value will be an array of nodes that share the same y-coordinate
@@ -46,16 +44,13 @@ export default function renderPositions(array) {
     // for each node, reassign the x position to the position variable
     for (let i = 0; i < arr.length; i += 1) {
       arr[i].position.x = position;
-      // increment the position by 600 divided by the sibling count to space out the nodes evenly
-      // 600 was hard-coded in; we can change the number to whatever width we'd like
+      // increment the position by 800 divided by the sibling count to space out the nodes evenly
+      // 800 was hard-coded in; we can change the number to whatever width we'd like
       position += 800 / siblingCount;
     }
   });
 
   console.log('sameLevel altered', sameLevel);
-
-  // nothing is being returned at the moment
-  return output;
 }
 
 /** ******** !!NEW CODE!! ******** * */
