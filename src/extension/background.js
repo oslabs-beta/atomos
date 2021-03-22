@@ -34,7 +34,7 @@ chrome.runtime.onMessage.addListener((request, sender) => {
     const tabId = sender.tab.id.toString();
     if (tabId in connections) {
       // request body consists of tree data that was sent from content.js
-      connections[tabId].postMessage(request)
+      connections[tabId].postMessage(request);
     } else console.log("Tab not found");
   } else console.log("sender.tab is not defined");
   return Promise.resolve("dummy response to keep the console quiet");
