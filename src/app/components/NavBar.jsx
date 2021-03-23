@@ -5,8 +5,6 @@ import { LinkContainer } from 'react-router-bootstrap';
 
 const NavBar = () => (
   <div>
-    {/* <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark"> */}
-
     <Navbar bg="dark" variant="dark">
       <Navbar.Brand href="#home">
         <img
@@ -31,14 +29,6 @@ const NavBar = () => (
       </Nav>
 
     </Navbar>
-    {/* <Nav>
-          <Nav.Link href="#deets">More deets</Nav.Link>
-          <Nav.Link eventKey={2} href="#memes">
-            Dank memes
-          </Nav.Link>
-        </Nav> */}
-    {/* </Navbar.Collapse> */}
-
   </div>
 );
 
