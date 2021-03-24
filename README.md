@@ -74,7 +74,7 @@
 Atomos is an open source Chrome developer tool designed for Recoil, Facebook's experimental state management library. Atomos provides real-time visualizations of a React/Recoil application’s structure and state to ensure more stable, performant code, less time spent debugging, and faster development cycles.
 
 Key features of our developer tool include:
-* Dynamically rendered component, atom, and selector visualizations which update with state changes
+* Dynamically rendered component tree visualizations which update with state changes
 * Atom and selector dropdown menus to view advanced component data
 * Clean and intuitive UI, developed with React Flow
 * Seamless integration with React Devtools
