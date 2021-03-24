@@ -47,6 +47,9 @@ export default function renderComponentTree(node) {
         edge.id = `e${parentId}-${node.id}`;
         edge.source = parentId.toString();
         edge.target = node.id.toString();
+
+        // edge.animated = true;
+        edge.style = { stroke: "#838383" };
         result2.push(edge);
       }
     }
