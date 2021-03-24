@@ -34,9 +34,9 @@ export default function renderComponentTree(node) {
       result.push(obj);
 
       // if current node is the root component (obj.id is 1)
-      if (obj.id === "1") {
+      if (obj.id === '1') {
         // set ReactFlow node style to input
-        obj.type = "input";
+        obj.type = 'input';
         // set parentID to root node
         parentId = obj.id;
       }
