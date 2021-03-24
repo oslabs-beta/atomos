@@ -1,12 +1,3 @@
-<!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Thanks again! Now go create something AMAZING! :D
--->
-
-
-
 <!-- PROJECT SHIELDS -->
 <!--
 *** I'm using markdown "reference style" links for readability.
@@ -35,7 +26,7 @@
 
   <p align="center">
     Atomos is an open source Chrome developer tool for Recoil that provides real-time visualization of the component tree and atom-selector relationships to facilitate the debugging of a React application. <br /> Atomos was developed under tech accelerator OSLabs.
-    <br />
+    <br /><br />
     <a href="https://www.getatomos.io"><strong>getatomos.io</strong></a>
     <br />
     <br />
@@ -80,14 +71,16 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-Atomos is an open source Chrome developer tool for Recoil that provides real-time visualization of the component tree and atom-selector relationships to facilitate the debugging of a React application. Atomos was developed under tech accelerator OSLabs.
+Atomos is an open source Chrome developer tool designed for Recoil, Facebook's experimental state management library. Atomos provides real-time visualizations of a React/Recoil application’s structure and state to ensure more stable, performant code, less time spent debugging, and faster development cycles.
 
-Why we built this project:
-* Feature 1
-* Feature 2
-* Feature :smile:
+Key features of our developer tool include:
+* Dynamically rendered component, atom, and selector visualizations which update with state changes
+* Atom and selector dropdown menus to view advanced component data
+* Clean and intuitive UI, developed with React Flow
+* Seamless integration with React Devtools
+* Quick and easy Chrome extension installation - no need to download an npm package
 
-Atomos is an open source Chrome developer tool for Recoil that provides real-time visualization of the component tree and atom-selector relationships to facilitate the debugging of a React application. Atomos was developed under tech accelerator OSLabs.
+<ins>Please note that Atomos is still in beta.</ins>
 
 
 ### Built With
@@ -115,7 +108,7 @@ The React Developer Tools Chrome <a href="https://chrome.google.com/webstore/det
 
 ### Installation
 
-To get started, download the Atomos [extension](https://example.com) from the Chrome Web Store.
+<strong><ins>To get started, download the Atomos [extension](https://example.com) from the Chrome Web Store.</ins></strong>
 
 Alternatively, you can manually install Atomos in [Developer mode](https://developer.chrome.com/docs/extensions/mv3/faq/#faq-dev-01).
 
@@ -147,7 +140,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- CONTRIBUTING -->
 ## Contributing
 
-Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
 1. Fork the Project
 2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
@@ -160,7 +153,7 @@ Contributions are what make the open source community such an amazing place to b
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See `LICENSE` for more information.
+Distributed under the MIT License. See [`LICENSE`](https://github.com/oslabs-beta/atomos/blob/main/LICENSE) for more information.
 
 
 
@@ -189,8 +182,8 @@ Vicki Lee - [@GitHub](https://github.com/vlee022/) - [@LinkedIn](https://www.lin
 [stars-url]: https://github.com/oslabs-beta/atomos/stargazers
 [issues-shield]: https://img.shields.io/github/issues/oslabs-beta/atomos.svg?style=for-the-badge
 [issues-url]: https://github.com/oslabs-beta/atomos/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
-[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
+[license-shield]: https://img.shields.io/github/license/oslabs-beta/atomos.svg?style=for-the-badge
+[license-url]: https://github.com/oslabs-beta/atomos/blob/main/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/company/getatomos/
 [product-screenshot]: images/screenshot.png
