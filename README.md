@@ -19,7 +19,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/oslabs-beta/atomos">
-    <img src="assets/atomos-banner.png" alt="Logo" height="200">
+    <img src="assets/atomos-banner.png" alt="Logo" height="200" width="600">
   </a>
 
   <h3 align="center">Atomos</h3>
