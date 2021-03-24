@@ -1,4 +1,4 @@
-import getAtomSelector from './getAtomSelector';
+import getAtomSelector from "./getAtomSelector";
 
 // Creates and returns obj containing component info from rendered DOM
 export default function getComponentNames(fiberNode) {
@@ -23,10 +23,10 @@ export default function getComponentNames(fiberNode) {
         const findAtomSelector = (currMS) => {
           // any atoms/selectors can be found in memoizedState.deps array
           if (
-            typeof currMS.memoizedState === 'object'
-            && !Array.isArray(currMS.memoizedState)
-            && currMS.memoizedState.deps
-            && currMS.memoizedState.deps.length
+            typeof currMS.memoizedState === "object" &&
+            !Array.isArray(currMS.memoizedState) &&
+            currMS.memoizedState.deps &&
+            currMS.memoizedState.deps.length
           ) {
             // key is the name of atom or selector from deps array
             const { key } = currMS.memoizedState.deps[0];
@@ -48,9 +48,9 @@ export default function getComponentNames(fiberNode) {
             components.selectors = null;
           }
         };
-        // inital invocation of function with memostate
+        // initial invocation of function with memostate
         findAtomSelector(node.memoizedState);
-      // node does not have memoizedState therefore no atom or selector on node
+        // node does not have memoizedState therefore no atom or selector on node
       } else {
         components.atoms = null;
         components.selectors = null;

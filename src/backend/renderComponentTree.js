@@ -5,11 +5,15 @@
 export default function renderComponentTree(node) {
   // instiantate result array, which will hold all named component tree nodes
   const result = [];
+  // instantiate result2 array, which will hold all edges (lines that connect nodes)
+  const result2 = [];
   let xaxis = 0;
   let yaxis = 1;
   // depth tracks how many levels deep we are so we can orient nodes on the y-axis correctly
   let depth = 1;
   let siblingCount = 1;
+  // parentId holds current parent node to create edges (connecting lines) between components
+  let parentId = null;
 
   // helper function to recurse through getComponentNames object and persist result, xaxis, etc.
   function makeNodes(node) {
@@ -25,10 +29,26 @@ export default function renderComponentTree(node) {
       obj.position = {};
       obj.position.x = xaxis;
       obj.position.y = yaxis;
+      obj.atom = node.atoms ? node.atoms : null;
+      obj.selector = node.selectors ? node.selectors : null;
       result.push(obj);
 
-      // if current node is the root component (obj.id is 1), set ReactFlow node style to input
-      if (obj.id === '1') obj.type = 'input';
+      // if current node is the root component (obj.id is 1)
+      if (obj.id === "1") {
+        // set ReactFlow node style to input
+        obj.type = "input";
+        // set parentID to root node
+        parentId = obj.id;
+      }
+
+      // edge functionality to create connecting lines between parent and child components
+      if (node.id > 1) {
+        const edge = {};
+        edge.id = `e${parentId}-${node.id}`;
+        edge.source = parentId.toString();
+        edge.target = node.id.toString();
+        result2.push(edge);
+      }
     }
 
     // if the node has a sibling, we wil increment sibling count and recurse into the sibling
@@ -40,16 +60,22 @@ export default function renderComponentTree(node) {
     // if the node has a named child, we will increment the depth counter and recurse into the child
     if (node.children && node.children.name !== null) {
       depth += 1;
-      // console.log('where the dep var is', depth);
+      siblingCount = 1;
+      // reassign parentID to current node ID
+      if (node.name !== null) parentId = node.id;
       return makeNodes(node.children);
     }
 
     // if node has an unnamed child, recurse into that child without incrementing depth
     // unnamed children are HTML elements that hold components within them, but are not components themselves
     if (node.children) {
+      siblingCount = 1;
+      // reassign parentID to current node ID
+      if (node.name !== null) parentId = node.id;
       return makeNodes(node.children);
     }
-    return result;
+    // concatenate both result arrays to create ReactFlow data w/ component and edge info
+    return result.concat(result2);
   }
 
   return makeNodes(node);
