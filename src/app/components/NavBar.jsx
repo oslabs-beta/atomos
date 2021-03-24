@@ -1,7 +1,6 @@
-import React from 'react';
-import { Navbar, Nav } from 'react-bootstrap';
-
-import { LinkContainer } from 'react-router-bootstrap';
+import React from "react";
+import { Navbar, Nav } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
 
 const NavBar = () => (
   <div>
@@ -20,14 +19,13 @@ const NavBar = () => (
         <LinkContainer to="">
           <Nav.Link>Component Tree</Nav.Link>
         </LinkContainer>
-        <LinkContainer to="/atoms">
-          <Nav.Link>Atoms</Nav.Link>
-        </LinkContainer>
-        <LinkContainer to="/selectors">
-          <Nav.Link>Selectors</Nav.Link>
-        </LinkContainer>
+        {/* <LinkContainer to="/atoms">
+        <Nav.Link>Atoms</Nav.Link>
+      </LinkContainer>
+      <LinkContainer to="/selectors">
+        <Nav.Link>Selectors</Nav.Link>
+      </LinkContainer> */}
       </Nav>
-
     </Navbar>
   </div>
 );
