@@ -6,9 +6,10 @@ import ReactFlow, {
   Controls,
   Background,
   Handle,
-} from "react-flow-renderer";
-import { Navbar, Nav, NavDropdown } from "react-bootstrap";
-const port = chrome.runtime.connect({ name: "Atomos" });
+} from 'react-flow-renderer';
+import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
+
+const port = chrome.runtime.connect({ name: 'Atomos' });
 
 const onLoad = (reactFlowInstance) => {
   console.log('flow loaded:', reactFlowInstance);
@@ -50,7 +51,7 @@ const ComponentTree = () => {
 
   // render component tree after state was changed
   return (
-    <div style={{ height: "85vh" }}>
+    <div style={{ height: '85vh' }}>
       <Navbar>
         <Nav>
           <NavDropdown title="Atoms" id="basic-nopav-dropdown">
@@ -70,7 +71,7 @@ const ComponentTree = () => {
                     const updatedTree = elements.map((node) => {
                       if (node.atom === el) {
                         node.style = {};
-                        node.style.border = "4px solid #c40a0a";
+                        node.style.border = '4px solid #c40a0a';
                       } else {
                         node.style = {};
                       }
@@ -100,7 +101,7 @@ const ComponentTree = () => {
                     const updatedTree = elements.map((node) => {
                       if (node.selector === el) {
                         node.style = {};
-                        node.style.border = "4px solid #1ef7a4";
+                        node.style.border = '4px solid #1ef7a4';
                       } else {
                         node.style = {};
                       }
@@ -123,18 +124,18 @@ const ComponentTree = () => {
         snapToGrid
         snapGrid={[15, 15]}
       >
-        <Handle style={{ color: "#1a192b" }} />
+        <Handle style={{ color: '#1a192b' }} />
         <MiniMap
           nodeStrokeColor={(n) => {
             if (n.style?.background) return n.style.background;
-            if (n.type === "input") return "#0041d0";
-            if (n.type === "output") return "#1a192b";
-            if (n.type === "default") return "#1a192b";
-            return "#eee";
+            if (n.type === 'input') return '#0041d0';
+            if (n.type === 'output') return '#1a192b';
+            if (n.type === 'default') return '#1a192b';
+            return '#eee';
           }}
           nodeColor={(n) => {
             if (n.style?.background) return n.style.background;
-            return "#fff";
+            return '#fff';
           }}
           nodeBorderRadius={1}
         />
