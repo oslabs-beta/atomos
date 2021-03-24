@@ -160,13 +160,13 @@ Distributed under the MIT License. See [`LICENSE`](https://github.com/oslabs-bet
 <!-- CORE TEAM -->
 ## Core Team
 
-Cole Redfearn - [@GitHub](https://github.com/coleredfearn/) - [@LinkedIn](https://www.linkedin.com/in/coleredfearn/)
+:star: Cole Redfearn - [@GitHub](https://github.com/coleredfearn/) - [@LinkedIn](https://www.linkedin.com/in/coleredfearn/)
 
-Jonathan Mendoza - [@GitHub](https://github.com/mendxza) - [@LinkedIn](https://twitter.com/your_username)
+:star: Jonathan Mendoza - [@GitHub](https://github.com/mendxza) - [@LinkedIn](https://twitter.com/your_username)
 
-Sumin Kim - [@GitHub](https://github.com/ppsm920/) - [@LinkedIn](https://www.linkedin.com/in/ppsm920/)
+:star: Sumin Kim - [@GitHub](https://github.com/ppsm920/) - [@LinkedIn](https://www.linkedin.com/in/ppsm920/)
 
-Vicki Lee - [@GitHub](https://github.com/vlee022/) - [@LinkedIn](https://www.linkedin.com/in/vlee022/)
+:star: Vicki Lee - [@GitHub](https://github.com/vlee022/) - [@LinkedIn](https://www.linkedin.com/in/vlee022/)
 
 
 
