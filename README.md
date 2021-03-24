@@ -78,7 +78,7 @@ Key features of our developer tool include:
 * Atom and selector dropdown menus to view advanced component data
 * Clean and intuitive UI, developed with React Flow
 * Seamless integration with React Devtools
-* Quick and easy Chrome extension installation - no need to download an npm package
+* Quick and easy Chrome extension installation
 
 <ins>Please note that Atomos is still in beta.</ins>
 
