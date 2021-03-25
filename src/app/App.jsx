@@ -10,8 +10,6 @@ const App = () => (
     <Router>
       <NavBar />
       <Switch>
-        {/* <Route path="/atoms" component={Atoms} />
-        <Route path="/selectors" component={Selectors} /> */}
         <Route exact path="" component={ComponentTree} />
       </Switch>
     </Router>
