@@ -1,4 +1,4 @@
-import getAtomSelector from "./getAtomSelector";
+import getAtomSelector from './getAtomSelector';
 
 // Creates and returns obj containing component info from rendered DOM
 export default function getComponentNames(fiberNode) {
@@ -9,7 +9,7 @@ export default function getComponentNames(fiberNode) {
 
   // helper function to traverse currently rendered DOM
   const traverse = (node) => {
-    // instantiating a components object to hold our conponent tree data in a deeply nested object
+    // instantiating a components object to hold our component tree data in a deeply nested object
     const components = {};
 
     // conditional to check if node is a NAMED component
@@ -19,7 +19,7 @@ export default function getComponentNames(fiberNode) {
 
       // if node has memoized state enter block to search for atom/selector values
       if (node.memoizedState) {
-        // recusive func to traverse memoized state's linked lists
+        // recursive func to traverse memoized state's linked lists
         const findAtomSelector = (currMS) => {
           // any atoms/selectors can be found in memoizedState.deps array
           if (
@@ -48,7 +48,7 @@ export default function getComponentNames(fiberNode) {
             components.selectors = null;
           }
         };
-        // initial invocation of function with memostate
+        // initial invocation of function with memoized state
         findAtomSelector(node.memoizedState);
       // node does not have memoizedState therefore no atom or selector on node
       } else {

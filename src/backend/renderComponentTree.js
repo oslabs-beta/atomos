@@ -1,9 +1,9 @@
-// creating a function to accept the deeply nexted object
+// creating a function to accept the deeply nested object
 // created by getComponentNames() and convert it into an array of
 // objects that can be used by React Flow in ComponentTree.jsx
 
 export default function renderComponentTree(node) {
-  // instiantate result array, which will hold all named component tree nodes
+  // initiate result array, which will hold all named component tree nodes
   const result = [];
   // instantiate result2 array, which will hold all edges (lines that connect nodes)
   const result2 = [];
@@ -34,9 +34,9 @@ export default function renderComponentTree(node) {
       result.push(obj);
 
       // if current node is the root component (obj.id is 1)
-      if (obj.id === "1") {
+      if (obj.id === '1') {
         // set ReactFlow node style to input
-        obj.type = "input";
+        obj.type = 'input';
         // set parentID to root node
         parentId = obj.id;
       }
@@ -47,6 +47,9 @@ export default function renderComponentTree(node) {
         edge.id = `e${parentId}-${node.id}`;
         edge.source = parentId.toString();
         edge.target = node.id.toString();
+
+        // edge.animated = true;
+        edge.style = { stroke: "#838383" };
         result2.push(edge);
       }
     }
@@ -67,7 +70,7 @@ export default function renderComponentTree(node) {
     }
 
     // if node has an unnamed child, recurse into that child without incrementing depth
-    // unnamed children are HTML elements that hold components within them, but are not components themselves
+    // Unnamed children are HTML elements that hold components within them, but are not components themselves
     if (node.children) {
       siblingCount = 1;
       // reassign parentID to current node ID

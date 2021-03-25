@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import ReactFlow, {
   removeElements,
   addEdge,
@@ -8,10 +8,12 @@ import ReactFlow, {
   Handle,
 } from "react-flow-renderer";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
+import LoadingPage from "./LoadingPage";
+
 const port = chrome.runtime.connect({ name: "Atomos" });
 
 const onLoad = (reactFlowInstance) => {
-  console.log('flow loaded:', reactFlowInstance);
+  console.log("flow loaded:", reactFlowInstance);
   reactFlowInstance.fitView();
 };
 
@@ -29,7 +31,7 @@ const ComponentTree = () => {
   useEffect(() => {
     // establish a connection between devtools and background page
     port.postMessage({
-      name: 'connect',
+      name: "connect",
       tabId: chrome.devtools.inspectedWindow.tabId,
     });
     // saving data to ReactfileParser
@@ -43,7 +45,7 @@ const ComponentTree = () => {
   if (loading) {
     return (
       <div>
-        <h1>Trigger state change to render component tree</h1>
+        <LoadingPage />
       </div>
     );
   }
@@ -100,7 +102,7 @@ const ComponentTree = () => {
                     const updatedTree = elements.map((node) => {
                       if (node.selector === el) {
                         node.style = {};
-                        node.style.border = "4px solid #1ef7a4";
+                        node.style.border = "4px solid #130fff"; //#078be3//1ef7a4
                       } else {
                         node.style = {};
                       }
@@ -146,13 +148,3 @@ const ComponentTree = () => {
 };
 
 export default ComponentTree;
-
-/** **** CONSOLE LOGS RUN IN DEVTOOLS CONSOLE ***** */
-// console.log('App.jsx is loaded');
-// create backend file to manifest.json to access react devtool
-// console.log('App.jsx window', window);
-// const dev = window.__REACT_DEVTOOLS_GLOBAL_HOOK__;
-// console.log('react dev tools -- App.jsx', dev);
-
-// console.log('chrome tabs -- App.jsx', chrome.tabs);
-// console.log('chrome -- App.jsx', chrome);
