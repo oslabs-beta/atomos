@@ -57,7 +57,7 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
+    <li><a href="#features">Features</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#core-team">Core Team</a></li>
@@ -68,6 +68,10 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
+
+<p align="center">
+  <img src="assets/StaticTree.jpg" alt="Atomos Component Tree" width="600px">
+</p>
 
 Atomos is an open source Chrome developer tool designed for Recoil, Facebook's experimental state management library. Atomos provides real-time visualizations of a React/Recoil application’s structure and state to ensure more stable, performant code, less time spent debugging, and faster development cycles.
 
@@ -127,14 +131,36 @@ Alternatively, you can manually install Atomos in [Developer mode](https://devel
 
 
 <!-- USAGE EXAMPLES -->
-## Usage
+## Features
+<p align="center">
+  <img src="assets/ComponentTree.gif" alt="Atomos Component Tree GIF" width="600px">
+  <h3 align="center"><ins>Component Tree</ins></h3>
+  <p align="center">
+    Atomos analyzes Recoil applications and renders interactive component trees powered by React Flow
+  </p>
+</p>
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+<br>
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+<p align="center">
+  <img src="assets/DynamicRender.gif" alt="Atomos Dynamic Rendering GIF" width="600px">
+  <h3 align="center"><ins>Dynamic Rendering</ins></h3>
+  <p align="center">
+    Atomos dynamically renders the component tree as the application changes - no need to reload the app
+  </p>
+</p>
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+<br>
 
+<p align="center">
+  <img src="assets/StateSelection.gif" alt="Atomos Atom and Selector GIF" width="600px">
+  <h3 align="center"><ins>Atom and Selector Relationships</ins></h3>
+  <p align="center">
+  Atomos tracks atoms and selectors throughout the application and selectively highlights them on the component tree to streamline the debugging process
+  </p>
+</p>
+
+<br>
 
 
 <!-- CONTRIBUTING -->
@@ -186,4 +212,3 @@ Distributed under the MIT License. See [`LICENSE`](https://github.com/oslabs-bet
 [license-url]: https://github.com/oslabs-beta/atomos/blob/main/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/company/getatomos/
-[product-screenshot]: images/screenshot.png
