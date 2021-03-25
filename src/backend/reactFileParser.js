@@ -15,9 +15,7 @@ dev.onCommitFiberRoot = (function (original) {
     // create component tree obj with atom/selector relationships
     const GCN = getComponentNames(fiberNode);
     // convert getComponentNames data into array of objects that ReactFlow can read
-    console.log("GCN", GCN);
     const treeNodes = renderComponentTree(GCN);
-    console.log("treeNodes", treeNodes);
     // console.log('treeNodes from renderCompTree', treeNodes);
     // invoke sendToContentScript to send treeNode data to the front end
     sendToContentScript(treeNodes);
