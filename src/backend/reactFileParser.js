@@ -1,5 +1,5 @@
-import getComponentNames from './getComponentNames';
-import renderComponentTree from './renderComponentTree';
+import getComponentNames from "./getComponentNames";
+import renderComponentTree from "./renderComponentTree";
 
 // backend folder is referenced in manifest as a web accessible resource
 // script is injected into content.js so it can be ran there
@@ -15,15 +15,17 @@ dev.onCommitFiberRoot = (function (original) {
     // create component tree obj with atom/selector relationships
     const GCN = getComponentNames(fiberNode);
     // convert getComponentNames data into array of objects that ReactFlow can read
+    console.log("GCN", GCN);
     const treeNodes = renderComponentTree(GCN);
+    console.log("treeNodes", treeNodes);
     // console.log('treeNodes from renderCompTree', treeNodes);
     // invoke sendToContentScript to send treeNode data to the front end
     sendToContentScript(treeNodes);
   };
-}(dev.onCommitFiberRoot));
+})(dev.onCommitFiberRoot);
 
 // sends the array with tree data to content.js
 function sendToContentScript(fiberTree) {
   const tree = JSON.parse(JSON.stringify(fiberTree));
-  window.postMessage({ tree }, '*');
+  window.postMessage({ tree }, "*");
 }

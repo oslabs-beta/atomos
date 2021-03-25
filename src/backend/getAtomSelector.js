@@ -16,8 +16,8 @@ export default function getAtomSelector(fiberNode) {
   const traverse = (node) => {
     // test if memoized state !== null and has a current property with knownAtoms
     if (
-      node.memoizedState
-      && node.memoizedState.current.hasOwnProperty('knownAtoms')
+      node.memoizedState &&
+      node.memoizedState.current.hasOwnProperty("knownAtoms")
     ) {
       // assign values in atomSelector obj when atoms and selectors are found
       atomSelectors.atoms = node.memoizedState.current.knownAtoms;

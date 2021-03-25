@@ -34,9 +34,9 @@ export default function renderComponentTree(node) {
       result.push(obj);
 
       // if current node is the root component (obj.id is 1)
-      if (obj.id === '1') {
+      if (obj.id === "1") {
         // set ReactFlow node style to input
-        obj.type = 'input';
+        obj.type = "input";
         // set parentID to root node
         parentId = obj.id;
       }
@@ -60,23 +60,23 @@ export default function renderComponentTree(node) {
       return makeNodes(node.siblings);
     }
 
+    if (node.children) {
+      siblingCount = 1;
+      // reassign parentID to current node ID
+      //if (node.name !== null) parentId = node.id;
+      return makeNodes(node.children);
+    }
     // if the node has a named child, we will increment the depth counter and recurse into the child
-    if (node.children && node.children.name !== null) {
+    if (node.children && node.children.name) {
       depth += 1;
       siblingCount = 1;
       // reassign parentID to current node ID
-      if (node.name !== null) parentId = node.id;
+      //if (node.name !== null) parentId = node.id;
       return makeNodes(node.children);
     }
 
     // if node has an unnamed child, recurse into that child without incrementing depth
     // Unnamed children are HTML elements that hold components within them, but not components themselves
-    if (node.children) {
-      siblingCount = 1;
-      // reassign parentID to current node ID
-      if (node.name !== null) parentId = node.id;
-      return makeNodes(node.children);
-    }
     // concatenate both result arrays to create ReactFlow data w/ component and edge info
     return result.concat(result2);
   }
