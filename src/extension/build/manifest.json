@@ -3,7 +3,7 @@
   "icons": { "48": "./assets/projectLogoNoCoil.png" },
   "manifest_version": 2,
   "version": "0.0.0.1",
-  "description": "Atomos is an open source dev tool for Recoil that provides tracks atom-selector relationships to facilitate debugging of a React application.",
+  "description": "Atomos is an open source dev tool for Recoil that tracks atom-selector relationships to facilitate debugging of a React app",
   "minimum_chrome_version": "10.0",
   "devtools_page": "./devtools.html",
   "background": {
