@@ -17,7 +17,7 @@ chrome.runtime.onConnect.addListener((port) => {
   // if the port is disconnected, handle it here
   port.onDisconnect.addListener((port) => {
     port.onMessage.removeListener(listenerForDevtool);
-    console.log('successfully removeListener');
+    // console.log('successfully removeListener');
     const tabs = Object.keys(connections);
     for (let i = 0; i < tabs.length; i++) {
       if (connections[tabs[i]] === port) {
