@@ -17,7 +17,7 @@ dev.onCommitFiberRoot = (function (original) {
     console.log("GCN", GCN);
     // convert getComponentNames data into array of objects that ReactFlow can read
     const treeNodes = renderComponentTree(GCN);
-    console.log("treeNodes", treeNodes);
+    console.log("treeNode", treeNodes);
     // console.log('treeNodes from renderCompTree', treeNodes);
     // invoke sendToContentScript to send treeNode data to the front end
     sendToContentScript(treeNodes);

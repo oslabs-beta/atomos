@@ -14,7 +14,6 @@ export default function getComponentNames(fiberNode) {
 
     // conditional to check if node is a NAMED component
     if (node.type && node.type.name) {
-      console.log("Node Name", node.type.name);
       components.id = ++counter;
       components.name = node.type.name;
 
