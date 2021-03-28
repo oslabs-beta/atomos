@@ -34,6 +34,7 @@ export default function renderComponentTree(node) {
         },
         atom: atom,
         selector: selector,
+        type: "input",
       };
       //obj.id = node.id.toString();
       // obj.data.label = node.name;
