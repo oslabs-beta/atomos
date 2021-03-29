@@ -1,7 +1,7 @@
 // creating a function to accept the deeply nested object
 // created by getComponentNames() and convert it into an array of
 // objects that can be used by React Flow in ComponentTree.jsx
-//const dagre = require("dagre");
+const dagre = require("dagre");
 
 export default function renderComponentTree(node) {
   // initiate result array, which will hold all named component tree nodes
@@ -26,15 +26,14 @@ export default function renderComponentTree(node) {
       let selector = node.selectors ? node.selectors : null;
       // instantiate new node obj for each component and set properties according to ReactFlow style
       const obj = {
-        id: node.id,
-        label: node.name,
+        id: node.id.toString(),
+        data: { label: node.name },
         position: {
           x: xaxis,
           y: yaxis,
         },
         atom: atom,
         selector: selector,
-        type: "input",
       };
       //obj.id = node.id.toString();
       // obj.data.label = node.name;
@@ -79,34 +78,30 @@ export default function renderComponentTree(node) {
       makeNodes(node.children);
     }
   }
-  /*
-  function dagreAxis(arr) {
-    console.log("Array", arr);
-    console.log("Array length", arr.length);
-    console.log("Array.isArray? ", Array.isArray(arr));
 
+  function dagreAxis(arr) {
     const g = new dagre.graphlib.Graph();
-    g.setGraph({});
-    g.setDefaultEdgeLabel(function () {
-      return {};
-    });
+    g.setGraph({ rankdir: "BT" });
 
     arr.forEach((el) => {
-      console.log("el 94", el);
-      g.setNode(el.label, {
-        label: el.label,
+      g.setNode(el.data.label, {
+        id: el.id,
+        data: { label: el.data.label },
         atom: el.atom,
         selector: el.selector,
-        width: 15,
-        height: 15,
+        width: 100,
+        height: 100,
       });
     });
-
     dagre.layout(g);
+
     const array = [];
+
     g.nodes().forEach(function (v) {
+      console.log("line 104", g.node(v));
       array.push({
-        label: g.node(v).label,
+        id: g.node(v).id,
+        data: { label: g.node(v).data.label },
         position: {
           x: g.node(v).x,
           y: g.node(v).y,
@@ -115,12 +110,10 @@ export default function renderComponentTree(node) {
         selector: g.node(v).selector,
       });
     });
-    return array;//
+    return array;
   }
-  const dagNODE = dagreAxis(result);
-  */
   makeNodes(node);
-  const hmmm = result.concat(result2);
-  console.log("line 123", hmmm);
-  return hmmm;
+  const daggerArr = dagreAxis(result);
+
+  return daggerArr.concat(result2);
 }
