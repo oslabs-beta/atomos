@@ -1,48 +1,61 @@
+/*
+  We use dagre to calculate the the x and y postion of each node and take calucations
+  to format our node into react flow syntax and include calucuated x/y position
+*/
+
 const dagre = require("dagre");
 
-const g = new dagre.graphlib.Graph();
+export default function dagreLayout(arr, arr2) {
+  // create new instance of dagre graph
+  const g = new dagre.graphlib.Graph();
 
-// Set an object for the graph label
-g.setGraph({});
+  // set empty edgeLabel, we will only not be using this obj
+  // just need for node calculations
+  g.setDefaultEdgeLabel(function () {
+    return {};
+  });
 
-// Default to assigning a new object as a label for each new edge.
-g.setDefaultEdgeLabel(function () {
-  return {};
-});
-g.setNode("kspacey", { label: "Kevin Spacey", width: 15, height: 15 });
-g.setNode("swilliams", { label: "Saul Williams", width: 15, height: 15 });
-g.setNode("bpitt", { label: "Brad Pitt", width: 15, height: 15 });
-g.setNode("hford", { label: "Harrison Ford", width: 15, height: 15 });
-g.setNode("lwilson", { label: "Luke Wilson", width: 15, height: 15 });
-g.setNode("kbacon", { label: "Kevin Bacon", width: 15, height: 15 });
+  // create the horizontal seperation of nodes
+  g.setGraph({
+    nodesep: 75,
+  });
 
-// Add edges to the graph.
-g.setEdge("kspacey", "swilliams");
-g.setEdge("swilliams", "kbacon");
-g.setEdge("bpitt", "kbacon");
-g.setEdge("hford", "lwilson");
-g.setEdge("lwilson", "kbacon");
+  // iterate through arr and format each node
+  arr.forEach((el) => {
+    g.setNode(el.id.toString(), {
+      id: el.id,
+      data: { label: el.data.label },
+      atom: el.atom,
+      selector: el.selector,
+      width: 100,
+      height: 50,
+    });
+  });
 
-/*  
-Next we can ask dagre to do the layout for these nodes and edges.
-This is done with the following code:
-*/
-dagre.layout(g);
-g.nodes().forEach((v) => {
-  let obj = {
-    atom: null,
-    data: {
-      label: g.node(v).label,
-    },
-    position: {
-      x: g.node(v).x,
-      y: g.node(v).y,
-    },
-    selector: null,
-    type: "input",
-  };
-  console.log(obj);
-});
-g.edges().forEach(function (e) {
-  console.log("Edge " + e.v + " -> " + e.w + ": " + JSON.stringify(g.edge(e)));
-});
+  // set edge we will not be needing edge info just need for node calc
+  arr2.forEach((el) => {
+    g.setEdge(el.source, el.target);
+  });
+
+  // this calculates overall graph info but we only need x/y position
+  dagre.layout(g);
+
+  // will be returning with new node format and NEEDED X/Y POSITION!
+  const array = [];
+
+  // iterate through nodes and push React flow formatted nodes with dagre calculated x/y pos
+  g.nodes().forEach(function (v) {
+    array.push({
+      id: g.node(v).id,
+      data: { label: g.node(v).data.label },
+      position: {
+        x: g.node(v).x,
+        y: g.node(v).y,
+      },
+      atom: g.node(v).atom,
+      selector: g.node(v).selector,
+    });
+  });
+
+  return array;
+}
