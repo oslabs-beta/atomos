@@ -1,17 +1,14 @@
 // creating a function to accept the deeply nested object
 // created by getComponentNames() and convert it into an array of
 // objects that can be used by React Flow in ComponentTree.jsx
+import dagreLayout from "./dagreLayout";
 
 export default function renderComponentTree(node) {
   // initiate result array, which will hold all named component tree nodes
   const result = [];
   // instantiate result2 array, which will hold all edges (lines that connect nodes)
   const result2 = [];
-  let xaxis = 0;
-  let yaxis = 1;
-  // depth tracks how many levels deep we are so we can orient nodes on the y-axis correctly
-  let depth = 1;
-  let siblingCount = 1;
+
   // parentId holds current parent node to create edges (connecting lines) between components
   let parentId = null;
 
@@ -19,24 +16,25 @@ export default function renderComponentTree(node) {
   function makeNodes(node) {
     // if current node has a name property, create a new object in results array
     if (node.name !== null) {
-      yaxis = depth * 100;
-      xaxis = siblingCount * 250; // 300 / depth;
+      let atom = node.atoms ? node.atoms : null;
+      let selector = node.selectors ? node.selectors : null;
       // instantiate new node obj for each component and set properties according to ReactFlow style
-      const obj = {};
-      obj.id = node.id.toString();
-      obj.data = {};
-      obj.data.label = node.name;
-      obj.position = {};
-      obj.position.x = xaxis;
-      obj.position.y = yaxis;
-      obj.atom = node.atoms ? node.atoms : null;
-      obj.selector = node.selectors ? node.selectors : null;
+      const obj = {
+        id: node.id.toString(),
+        data: { label: node.name },
+        position: {
+          x: 0,
+          y: 0,
+        },
+        atom: atom,
+        selector: selector,
+      };
       result.push(obj);
 
       // if current node is the root component (obj.id is 1)
-      if (obj.id === '1') {
+      if (obj.id === "1") {
         // set ReactFlow node style to input
-        obj.type = 'input';
+        obj.type = "input";
         // set parentID to root node
         parentId = obj.id;
       }
@@ -56,30 +54,21 @@ export default function renderComponentTree(node) {
 
     // if the node has a sibling, we wil increment sibling count and recurse into the sibling
     if (node.siblings) {
-      siblingCount += 1;
-      return makeNodes(node.siblings);
+      makeNodes(node.siblings);
     }
 
     // if the node has a named child, we will increment the depth counter and recurse into the child
-    if (node.children && node.children.name !== null) {
-      depth += 1;
-      siblingCount = 1;
-      // reassign parentID to current node ID
-      if (node.name !== null) parentId = node.id;
-      return makeNodes(node.children);
-    }
-
-    // if node has an unnamed child, recurse into that child without incrementing depth
-    // Unnamed children are HTML elements that hold components within them, but not components themselves
     if (node.children) {
-      siblingCount = 1;
-      // reassign parentID to current node ID
       if (node.name !== null) parentId = node.id;
-      return makeNodes(node.children);
+      makeNodes(node.children);
     }
-    // concatenate both result arrays to create ReactFlow data w/ component and edge info
-    return result.concat(result2);
   }
 
-  return makeNodes(node);
+  makeNodes(node);
+
+  // use dagre to format nodes x/y positions
+  const dagre = dagreLayout(result, result2);
+
+  // concat dagre node layout with React flow relation array from result2
+  return dagre.concat(result2);
 }

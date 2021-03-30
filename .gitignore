@@ -4,3 +4,4 @@ node_modules
 .DS_Store
 # Bundle
 src/extension/build/bundles
+package-lock.json
