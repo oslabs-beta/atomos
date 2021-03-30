@@ -110,9 +110,7 @@ The React Developer Tools Chrome <a href="https://chrome.google.com/webstore/det
 
 ### Installation
 
-<strong><ins>To get started, download the Atomos [extension](https://chrome.google.com/webstore/detail/atomos/hdoljekhdmbkopfbcdljnjmjkgfgoebi?hl=en) from the Chrome Web Store.</ins></strong>
-
-Alternatively, you can manually install Atomos in [Developer mode](https://developer.chrome.com/docs/extensions/mv3/faq/#faq-dev-01).
+To get started, manually install Atomos in [Developer mode](https://developer.chrome.com/docs/extensions/mv3/faq/#faq-dev-01).
 
 1. Clone the repo
    ```sh
