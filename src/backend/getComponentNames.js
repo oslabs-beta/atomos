@@ -22,15 +22,20 @@ export default function getComponentNames(fiberNode) {
         // recursive func to traverse memoized state's linked lists
         const findAtomSelector = (currMS) => {
           // any atoms/selectors can be found in memoizedState.deps array
+          let depWithKey = null;
           if (
+            currMS.memoizedState &&
             typeof currMS.memoizedState === "object" &&
             !Array.isArray(currMS.memoizedState) &&
             currMS.memoizedState.deps &&
             currMS.memoizedState.deps.length
           ) {
             // key is the name of atom or selector from deps array
-            const { key } = currMS.memoizedState.deps[0];
+            depWithKey = currMS.memoizedState.deps.filter(p => !!p).find(({ key }) => key !== undefined);
+          }
+          if (depWithKey) {
             // test if Recoil value is atom or selector
+            const { key } = depWithKey;
             if (atomSelectorObj.atoms.has(key)) {
               components.atoms = key;
               components.selectors = null;
