@@ -17,6 +17,7 @@ export default function getAtomSelector(fiberNode) {
     // test if memoized state !== null and has a current property with knownAtoms
     if (
       node.memoizedState &&
+      node.memoizedState.current &&
       node.memoizedState.current.hasOwnProperty("knownAtoms")
     ) {
       // assign values in atomSelector obj when atoms and selectors are found
@@ -29,10 +30,16 @@ export default function getAtomSelector(fiberNode) {
   };
 
   // invoke helper func to assign atoms and selectors to atomSelector object
-  if (fiberNode.memoizedState) {
-    traverse(fiberNode.memoizedState);
-  } else {
-    traverse(fiberNode.child.memoizedState);
+  let fiberNodeWithState = fiberNode;
+  while (!fiberNodeWithState.memoizedState) {
+    fiberNodeWithState = fiberNodeWithState.child;
+  }
+  if (fiberNodeWithState.memoizedState) {
+    traverse(fiberNodeWithState.memoizedState);
+  }
+  if (atomSelectors.atoms === null) {
+    console.log(fiberNode)
+    throw new Error('No FiberNode with memoized state found')
   }
 
   return atomSelectors;
